@@ -1,0 +1,26 @@
+digraph ImplementTask {
+    graph [
+        goal="Implement the requested software change"
+    ]
+
+    rankdir=LR
+
+    start [shape=Mdiamond, label="Start"]
+
+    implement [
+        label="Implement",
+        prompt="@prompts/implement.md",
+        reasoning_effort="high"
+    ]
+
+    verify [
+        label="Verify",
+        shape=parallelogram,
+        script="{{ inputs.verify_command }}",
+        retry_policy="none"
+    ]
+
+    exit [shape=Msquare, label="Exit"]
+
+    start -> implement -> verify -> exit
+}
