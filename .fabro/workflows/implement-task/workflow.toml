@@ -2,3 +2,9 @@ _version = 1
 
 [workflow]
 graph = "workflow.fabro"
+
+[run.environment]
+id = "factory-worker"
+
+[[run.prepare.steps]]
+command = ["factory-prepare"]
