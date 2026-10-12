@@ -16,8 +16,10 @@ digraph ImplementTask {
     verify [
         label="Verify",
         shape=parallelogram,
-        script="{{ inputs.verify_command }}",
-        retry_policy="none"
+        script="bash -lc {{ inputs.verify_command }}",
+        retry_policy="none",
+        goal_gate=true,
+        on_failure="exit"
     ]
 
     exit [shape=Msquare, label="Exit"]
